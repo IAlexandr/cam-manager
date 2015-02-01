@@ -13,7 +13,7 @@ var MODE_CONNECT = 'connect';
 var MODE_ERROR = 'error';
 var MODE_SHOW = 'show';
 
-var CamMonitor = React.createClass({
+var Itv = React.createClass({
 
     propTypes: {
         start: React.PropTypes.object,  // date
