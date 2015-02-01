@@ -1,0 +1,36 @@
+<!-- index.html -->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CamManager</title>
+    <script src="lib/react-0.12.2.js"></script>
+    <script src="lib/jsx-0.12.2.js"></script>
+</head>
+<body>
+<script type="text/jsx" src="react-components/itv.jsx"></script>
+<script type="text/jsx" src="react-components/axis.jsx"></script>
+<script type="text/jsx" src="react-components/mobotix.jsx"></script>
+<script type="text/jsx" src="react-components/etro.jsx"></script>
+<script type="text/jsx">
+    var CamBundle = React.createClass({
+        render: function () {
+            return (
+                    <div>
+                        <p>
+                            <CamMonitor
+                                    serverIp="10.157.199.15"
+                                    camId="125"
+                            />
+                        </p>
+                    </div>
+            );
+        }
+    });
+
+    React.renderComponent(
+            <CamBundle />,
+            document.body
+    );
+</script>
+</body>
+</html>
