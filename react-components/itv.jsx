@@ -16,6 +16,9 @@ var MODE_SHOW = 'show';
 var DEFAULT_ITV_WIDTH = "320px";
 var DEFAULT_ITV_HEIGHT = "240px";
 
+// https://doc.axxonsoft.com/confluence/pages/viewpage.action?pageId=119015369#id-ПараметрыCamMonitor.ocx-CamButtonsOptions
+var ITV_CAM_BUTTON_OPTIONS = parseInt('1100000111', 2);
+
 var Itv = React.createClass({
 
     propTypes: {
@@ -27,9 +30,6 @@ var Itv = React.createClass({
     },
 
     getInitialState: function () {
-
-        // Это выполняется перед функцией render. Возвращаемый объект
-        // присваивается в this.state, чтобы мы могли использовать его позже.
 
         return {
             mode: MODE_INITIAL,
@@ -65,10 +65,6 @@ var Itv = React.createClass({
     },
 
     componentWillUnmount: function () {
-
-        // Этот метод вызывается сразу после того,
-        // как компонент удален
-        // со страницы и уничтожен. Мы можем удалить интервал здесь:
 
         clearTimeout(this.toHandle);
         clearTimeout(this.tickHandle);
@@ -109,7 +105,12 @@ var Itv = React.createClass({
                 break;
             case MODE_ERROR:
                 mainContent = (
-                    <div>
+                    <div
+                        style = {{
+                            width: width,
+                            height: height
+                        }}
+                    >
                         <p>
                             <b>Ошибка</b>
                         </p>
@@ -122,15 +123,7 @@ var Itv = React.createClass({
         }
 
         return (
-            <div>
-                <b>server ip: { this.props.serverIp }</b>
-                <br />
-                <b>cam id: { this.props.camId }</b>
-                <br />
-                <b>mode: { this.state.mode }</b>
-                <br />
-                <div>{ mainContent }</div>
-            </div>
+            <div>{ mainContent }</div>
         );
     },
 
@@ -151,7 +144,7 @@ var Itv = React.createClass({
 
     tryConnect: function () {
         var cmNode = this.refs.camMon.getDOMNode();
-
+        cmNode.object.CamButtonsOptions = ITV_CAM_BUTTON_OPTIONS;
         cmNode.object.Connect(this.props.serverIp, "", "", "", 0);
         this.tickHandle = setTimeout(this.tryConnect, CONNECT_TICK_INTERVAL);
     },

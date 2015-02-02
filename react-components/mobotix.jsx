@@ -77,15 +77,6 @@ var Mobotix = React.createClass({
 
         switch (this.state.mode) {
             case MODE_INITIAL:
-                mainConent = (
-                    <div>
-                        <b>cam ip: { this.props.camIp }</b>
-                        <br />
-                        <b>mode: { this.state.mode }</b>
-                        <br />
-                    </div>
-                );
-            case MODE_CONNECT:
             case MODE_SHOW:
                 mainContent = (
                     <object
@@ -191,7 +182,12 @@ var Mobotix = React.createClass({
                 break;
             case MODE_ERROR:
                 mainContent = (
-                    <div>
+                    <div
+                        style = {{
+                            width: width,
+                            height: height
+                        }}
+                    >
                         <p>
                             <b>Ошибка</b>
                         </p>
@@ -204,13 +200,7 @@ var Mobotix = React.createClass({
         }
 
         return (
-            <div>
-                <b>cam ip: { this.props.camIp }</b>
-                <br />
-                <b>mode: { this.state.mode }</b>
-                <br />
-                <div>{ mainContent }</div>
-            </div>
+            <div>{ mainContent }</div>
         )
     }
 });

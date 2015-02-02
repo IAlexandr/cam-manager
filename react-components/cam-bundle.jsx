@@ -2,13 +2,7 @@ var CamBundle = React.createClass({
     render: function () {
         return (
             <div>
-                <div
-                    style = {{
-                        border: "2px solid blue",
-                        width: "480px",
-                        height: "320px"
-                    }}
-                >
+                <div>
                     <Itv
                         serverIp = "10.157.199.15"
                         camId = "125"
@@ -16,13 +10,7 @@ var CamBundle = React.createClass({
                         height = "240px"
                     />
                 </div>
-                <div
-                    style = {{
-                        border: "2px solid red",
-                        width: "480px",
-                        height: "320px"
-                    }}
-                >
+                <div>
                     <Axis
                         userName = "user"
                         password = "user21"
@@ -31,13 +19,7 @@ var CamBundle = React.createClass({
                         height = "240px"
                     />
                 </div>
-                <div
-                    style = {{
-                        border: "2px solid green",
-                        width: "480px",
-                        height: "320px"
-                    }}
-                >
+                <div>
                     <Mobotix
                         userName = "user"
                         password = "user21"
