@@ -13,12 +13,17 @@ var MODE_CONNECT = 'connect';
 var MODE_ERROR = 'error';
 var MODE_SHOW = 'show';
 
+var DEFAULT_ITV_WIDTH = "320px";
+var DEFAULT_ITV_HEIGHT = "240px";
+
 var Itv = React.createClass({
 
     propTypes: {
         start: React.PropTypes.object,  // date
         serverIp: React.PropTypes.string.isRequired,
-        camId: React.PropTypes.string.isRequired
+        camId: React.PropTypes.string.isRequired,
+        width: React.PropTypes.string,
+        height: React.PropTypes.string
     },
 
     getInitialState: function () {
@@ -74,8 +79,19 @@ var Itv = React.createClass({
 
     render: function () {
 
-        // Хоть мы и возвращаем целый <p> элемент, react разумно обновит
-        // только измененные части, содержащие переменную seconds.
+        var width = "";
+        var height = "";
+        if (this.props.width) {
+            width = this.props.width;
+        } else {
+            width = DEFAULT_ITV_WIDTH;
+        }
+
+        if (this.props.height) {
+            height = this.props.height;
+        } else {
+            height = DEFAULT_ITV_HEIGHT;
+        }
 
         var mainContent;
         switch (this.state.mode) {
@@ -84,6 +100,8 @@ var Itv = React.createClass({
             case MODE_SHOW:
                 mainContent = (
                     <object
+                        width = { width }
+                        height = { height }
                         ref = "camMon"
                         classID = { "clsid:" + ACTIVEX_ITV_CLASS_ID }
                     />
@@ -110,8 +128,6 @@ var Itv = React.createClass({
                 <b>cam id: { this.props.camId }</b>
                 <br />
                 <b>mode: { this.state.mode }</b>
-                <br />
-                <b>error msg: { this.state.errorMessage }</b>
                 <br />
                 <div>{ mainContent }</div>
             </div>
