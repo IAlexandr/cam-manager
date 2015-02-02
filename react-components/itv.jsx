@@ -1,6 +1,6 @@
 var ACTIVEX_ITV_CLASS_ID = "3A41B075-E368-4F94-9E59-5F26DC102BF4";
 
-var CONNECT_TIMEOUT = 1 * 60 * 1000;
+var CONNECT_TIMEOUT = 30 * 1000;
 var CONNECT_TICK_INTERVAL = 5 * 1000;
 
 var CHECKCONNECT_INTERVAL = 200;
@@ -61,7 +61,8 @@ var Itv = React.createClass({
 
     componentWillUnmount: function () {
 
-        // Этот метод вызывается сразу после того, как компонент удален
+        // Этот метод вызывается сразу после того,
+        // как компонент удален
         // со страницы и уничтожен. Мы можем удалить интервал здесь:
 
         clearTimeout(this.toHandle);
