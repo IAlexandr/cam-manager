@@ -4,16 +4,13 @@ var MODE_INITIAL = 'initial';
 var MODE_ERROR = 'error';
 var MODE_SHOW = 'show';
 
-var DEFAULT_MOBOTIX_WIDTH = "320px";
-var DEFAULT_MOBOTIX_HEIGHT = "240px";
-
 var Mobotix = React.createClass({
     propTypes: {
         userName: React.PropTypes.string.isRequired,
         password: React.PropTypes.string.isRequired,
         camIp: React.PropTypes.string.isRequired,
-        width: React.PropTypes.string,
-        height: React.PropTypes.string
+        width: React.PropTypes.number,
+        height: React.PropTypes.number
     },
 
     getInitialState: function () {
@@ -32,7 +29,6 @@ var Mobotix = React.createClass({
 
         if ("object" in mbxNode) {
             try {
-                debugger;
                 mbxNode.navPlay();
             } catch (e) {
                 check = false;
@@ -61,27 +57,13 @@ var Mobotix = React.createClass({
 
     render: function () {
 
-        var width = "";
-        var height = "";
-        if (this.props.width) {
-            width = this.props.width;
-        } else {
-            width = DEFAULT_MOBOTIX_WIDTH;
-        }
-
-        if (this.props.height) {
-            height = this.props.height;
-        } else {
-            height = DEFAULT_MOBOTIX_HEIGHT;
-        }
-
         switch (this.state.mode) {
             case MODE_INITIAL:
             case MODE_SHOW:
                 mainContent = (
                     <object
-                        width = { width }
-                        height = { height }
+                        width = { this.props.width }
+                        height = { this.props.height }
                         ref = "mobotix"
                         classID = { "clsid:" + ACTIVEX_MOBOTIX_CLASS_ID }
                     >
@@ -151,7 +133,7 @@ var Mobotix = React.createClass({
                         />
                         <param
                             name="BackColor"
-                            value="0x00ff0000"
+                            value="0xaaaaaaaa"
                         />
                         <param
                             name="Player"
@@ -184,8 +166,8 @@ var Mobotix = React.createClass({
                 mainContent = (
                     <div
                         style = {{
-                            width: width,
-                            height: height
+                            width: this.props.width,
+                            height: this.props.height
                         }}
                     >
                         <p>

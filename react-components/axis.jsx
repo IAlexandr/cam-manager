@@ -4,16 +4,13 @@ var MODE_INITIAL = 'initial';
 var MODE_ERROR = 'error';
 var MODE_SHOW = 'show';
 
-var DEFAULT_AXIS_WIDTH = "320px";
-var DEFAULT_AXIS_HEIGHT = "240px";
-
 var Axis = React.createClass({
     propTypes: {
         userName: React.PropTypes.string.isRequired,
         password: React.PropTypes.string.isRequired,
         camIp: React.PropTypes.string.isRequired,
-        width: React.PropTypes.string,
-        height: React.PropTypes.string
+        width: React.PropTypes.number.isRequired,
+        height: React.PropTypes.number.isRequired
     },
 
     getInitialState: function () {
@@ -33,6 +30,13 @@ var Axis = React.createClass({
         if ("object" in axNode) {
             try {
                 axNode.Play();
+                debugger;
+                function test1(bStat) {
+                    debugger;
+                    console.log('test1');
+                }
+                eval("function axNode::OnStatusChange (bStat) {return test1 (bStat);}");
+
             } catch (e) {
                 check = false;
                 errMessage = e.message;
@@ -60,27 +64,13 @@ var Axis = React.createClass({
 
     render: function () {
 
-        var width = "";
-        var height = "";
-        if (this.props.width) {
-            width = this.props.width;
-        } else {
-            width = DEFAULT_AXIS_WIDTH;
-        }
-
-        if (this.props.height) {
-            height = this.props.height;
-        } else {
-            height = DEFAULT_AXIS_HEIGHT;
-        }
-
         switch (this.state.mode) {
             case MODE_INITIAL:
             case MODE_SHOW:
                 mainContent = (
                     <object
-                        width = { width }
-                        height = { height }
+                        width = { this.props.width }
+                        height = { this.props.height }
                         ref = "axis"
                         classID = { "clsid:" + ACTIVEX_AXIS_CLASS_ID }
                     >
@@ -123,8 +113,8 @@ var Axis = React.createClass({
                 mainContent = (
                     <div
                         style = {{
-                            width: width,
-                            height: height
+                            width: this.props.width,
+                            height: this.props.height
                         }}
                     >
                         <p>

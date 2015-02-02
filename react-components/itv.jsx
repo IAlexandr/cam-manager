@@ -13,9 +13,6 @@ var MODE_CONNECT = 'connect';
 var MODE_ERROR = 'error';
 var MODE_SHOW = 'show';
 
-var DEFAULT_ITV_WIDTH = "320px";
-var DEFAULT_ITV_HEIGHT = "240px";
-
 // https://doc.axxonsoft.com/confluence/pages/viewpage.action?pageId=119015369#id-ПараметрыCamMonitor.ocx-CamButtonsOptions
 var ITV_CAM_BUTTON_OPTIONS = parseInt('1100000111', 2);
 
@@ -25,8 +22,8 @@ var Itv = React.createClass({
         start: React.PropTypes.object,  // date
         serverIp: React.PropTypes.string.isRequired,
         camId: React.PropTypes.string.isRequired,
-        width: React.PropTypes.string,
-        height: React.PropTypes.string
+        width: React.PropTypes.number.isRequired,
+        height: React.PropTypes.number.isRequired
     },
 
     getInitialState: function () {
@@ -75,20 +72,6 @@ var Itv = React.createClass({
 
     render: function () {
 
-        var width = "";
-        var height = "";
-        if (this.props.width) {
-            width = this.props.width;
-        } else {
-            width = DEFAULT_ITV_WIDTH;
-        }
-
-        if (this.props.height) {
-            height = this.props.height;
-        } else {
-            height = DEFAULT_ITV_HEIGHT;
-        }
-
         var mainContent;
         switch (this.state.mode) {
             case MODE_INITIAL:
@@ -96,8 +79,8 @@ var Itv = React.createClass({
             case MODE_SHOW:
                 mainContent = (
                     <object
-                        width = { width }
-                        height = { height }
+                        width = { this.props.width }
+                        height = { this.props.height }
                         ref = "camMon"
                         classID = { "clsid:" + ACTIVEX_ITV_CLASS_ID }
                     />
@@ -107,8 +90,8 @@ var Itv = React.createClass({
                 mainContent = (
                     <div
                         style = {{
-                            width: width,
-                            height: height
+                            width: this.props.width,
+                            height: this.props.height
                         }}
                     >
                         <p>
