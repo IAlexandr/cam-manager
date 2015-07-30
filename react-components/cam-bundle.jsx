@@ -85,24 +85,167 @@ React.renderComponent(
             }}
         />
         <CamBundle
-            type="AXIS"
+            type="ITV"
+            width = { 420 }
+            height = { 240 }
             connectionOptions = {{
-                userName: "user",
-                password: "user21",
-                camIp: "10.157.197.133"
+                serverIp: "10.157.199.11",
+                camId: "546"
             }}
         />
         <CamBundle
-            type="MOBOTIX"
-            width = { 320 }
+            type="ITV"
+            width = { 420 }
             height = { 240 }
             connectionOptions = {{
-                userName: "user",
-                password: "user21",
-                camIp: "10.157.197.62"
+                serverIp: "10.157.199.12",
+                camId: "725"
+            }}
+        />
+        <CamBundle
+            type="ITV"
+            width = { 420 }
+            height = { 240 }
+            connectionOptions = {{
+                serverIp: "10.157.199.9",
+                camId: "343"
+            }}
+        />
+        <CamBundle
+            type="ITV"
+            width = { 420 }
+            height = { 240 }
+            connectionOptions = {{
+                serverIp: "10.157.199.8",
+                camId: "219"
+            }}
+        />
+        <CamBundle
+            type="ITV"
+            width = { 420 }
+            height = { 240 }
+            connectionOptions = {{
+                serverIp: "10.157.199.8",
+                camId: "220"
+            }}
+        />
+        <CamBundle
+            type="ITV"
+            width = { 420 }
+            height = { 240 }
+            connectionOptions = {{
+                serverIp: "10.157.199.11",
+                camId: "546"
+            }}
+        />
+        <CamBundle
+            type="ITV"
+            width = { 420 }
+            height = { 240 }
+            connectionOptions = {{
+                serverIp: "10.157.199.12",
+                camId: "725"
+            }}
+        />
+        <CamBundle
+            type="ITV"
+            width = { 420 }
+            height = { 240 }
+            connectionOptions = {{
+                serverIp: "10.157.199.9",
+                camId: "343"
+            }}
+        />
+        <CamBundle
+            type="ITV"
+            width = { 420 }
+            height = { 240 }
+            connectionOptions = {{
+                serverIp: "10.157.199.8",
+                camId: "219"
+            }}
+        />
+        <CamBundle
+            type="ITV"
+            width = { 420 }
+            height = { 240 }
+            connectionOptions = {{
+                serverIp: "10.157.199.8",
+                camId: "220"
             }}
         />
     </div>
     ,
     document.body
 );
+
+/*
+
+ <CamBundle
+ type="ITV"
+ width = { 420 }
+ height = { 240 }
+ connectionOptions = {{
+ serverIp: "10.157.199.11",
+ camId: "546"
+ }}
+ />
+ <CamBundle
+ type="ITV"
+ width = { 420 }
+ height = { 240 }
+ connectionOptions = {{
+ serverIp: "10.157.199.12",
+ camId: "725"
+ }}
+ />
+ <CamBundle
+ type="ITV"
+ width = { 420 }
+ height = { 240 }
+ connectionOptions = {{
+ serverIp: "10.157.199.9",
+ camId: "343"
+ }}
+ />
+ <CamBundle
+ type="ITV"
+ width = { 420 }
+ height = { 240 }
+ connectionOptions = {{
+ serverIp: "10.157.199.8",
+ camId: "219"
+ }}
+ />
+ <CamBundle
+ type="ITV"
+ width = { 420 }
+ height = { 240 }
+ connectionOptions = {{
+ serverIp: "10.157.199.8",
+ camId: "220"
+ }}
+ />
+
+
+
+
+* <CamBundle
+ type="AXIS"
+ connectionOptions = {{
+ userName: "user",
+ password: "user21",
+ camIp: "10.157.197.133"
+ }}
+ />
+ <CamBundle
+ type="MOBOTIX"
+ width = { 320 }
+ height = { 240 }
+ connectionOptions = {{
+ userName: "user",
+ password: "user21",
+ camIp: "10.157.197.62"
+ }}
+ />
+* */

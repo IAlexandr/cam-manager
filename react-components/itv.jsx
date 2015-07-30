@@ -156,7 +156,7 @@ var Itv = React.createClass({
 
     tryShowCamera: function () {
         var cmNode = this.refs.camMon.getDOMNode();
-        cmNode.object.ShowCam(this.props.camId, 0, 1);
+        cmNode.object.ShowCam(this.props.camId, -1, 1);
         if (--this.cameraShowCounter > 0) {
             this.camToHandle = setTimeout(this.tryShowCamera, CAMERA_SHOW_INTERVAL);
         }
